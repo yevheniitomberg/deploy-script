@@ -26,10 +26,10 @@ if project == "spring":
         f.write(f"#!/bin/bash\nnohup java -jar {jarFileName} > app.log 2>&1 &\necho $! > save_pid.txt")
 
     with open(f"{pathToDir}/restart.sh", "w") as f:
-        f.write(f"cd /home/{directory}\nkill -9 cat save_pid.txt\nrm save_pid.txt\n./deploy.sh")
+        f.write(f"cd /home/{directory}\nkill $(cat save_pid.txt)\nrm save_pid.txt\n./deploy.sh")
 
     with open(f"{pathToDir}/stop.sh", "w") as f:
-        f.write(f"cd /home/{directory}\nkill -9 cat save_pid.txt\nrm save_pid.txt")
+        f.write(f"cd /home/{directory}\nkill $(cat save_pid.txt)\nrm save_pid.txt")
 
     shutil.copy(f"{os.getcwd()}\\nginx_cert.py", pathToDir)
     shutil.copy(f"{os.getcwd()}\\fix_sh.py", pathToDir)
