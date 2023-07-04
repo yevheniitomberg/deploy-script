@@ -23,7 +23,7 @@ if project == "spring":
         f.write(f"cd /home/{directory}\npython3 nginx_cert.py {directory} {port}")
 
     with open(f"{pathToDir}/deploy.sh", "w") as f:
-        f.write(f"#!/bin/bash\nnohup java -jar {jarFileName} ^> app.log 2^>^&1 ^&\necho $! ^> save_pid.txt")
+        f.write(f"#!/bin/bash\nnohup java -jar {jarFileName} > app.log 2>&1 &\necho $! > save_pid.txt")
 
     with open(f"{pathToDir}/restart.sh", "w") as f:
         f.write(f"cd /home/{directory}\nkill -9 cat save_pid.txt\nrm save_pid.txt\n./deploy.sh")
