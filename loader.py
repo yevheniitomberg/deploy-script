@@ -17,7 +17,7 @@ if not os.path.exists(pathToDir):
 # Text files to execute remote scripts
 if project == "spring":
     with open(f"{pathToDir}/start_deploy.txt", "w") as f:
-        f.write(f"cd /home/{directory}\n./deploy.sh")
+        f.write(f"cd /home/{directory}\npython3 fix_sh.py\n./deploy.sh")
 
     with open(f"{pathToDir}/load_cert.txt", "w") as f:
         f.write(f"cd /home/{directory}\npython3 nginx_cert.py {directory} {port}")
@@ -32,6 +32,7 @@ if project == "spring":
         f.write(f"cd /home/{directory}\nkill -9 cat save_pid.txt\nrm save_pid.txt")
 
     shutil.copy(f"{os.getcwd()}\\nginx_cert.py", pathToDir)
+    shutil.copy(f"{os.getcwd()}\\fix_sh.py", pathToDir)
 
     #Build finding
     elementsOfPath = os.getcwd().split("\\")
