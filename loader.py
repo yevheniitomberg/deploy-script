@@ -65,4 +65,4 @@ elif project == "react":
     elementsOfPath = os.getcwd().split("\\")
     elementsOfPath.pop()
     path = "\\".join(elementsOfPath)
-    shutil.copy(f"{path}", pathToDir)
+    shutil.copytree(f"{path}", pathToDir)
