@@ -2,6 +2,9 @@ import sys
 import shutil
 import os
 
+def copytree(src,dst):
+    os.system("cp -r "+src+" "+dst)
+
 project = sys.argv[1]
 directory = sys.argv[2]
 mappedRemoteDisk = sys.argv[3]
@@ -66,4 +69,5 @@ elif project == "react":
     elementsOfPath.pop()
     elementsOfPath.append("build")
     path = "\\".join(elementsOfPath)
-    shutil.copytree(path, pathToDir)
+    copytree(path, pathToDir)
+
