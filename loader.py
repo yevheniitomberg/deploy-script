@@ -3,7 +3,7 @@ import shutil
 import os
 
 def copytree(src,dst):
-    os.system(f'xcopy "{src}" "{dst}"')
+    os.system(f'xcopy "{src}" "{dst}\\build" /E')
 
 project = sys.argv[1]
 directory = sys.argv[2]
@@ -64,6 +64,9 @@ elif project == "react":
 
     with open(f"{pathToDir}/stop.sh", "w") as f:
         f.write(f"cd /home/{directory}\nkill $(cat save_pid.txt)\nrm save_pid.txt")
+
+    if not os.path.exists(f"{pathToDir}\\build"):
+        os.makedirs(f"{pathToDir}\\build")
 
     elementsOfPath = os.getcwd().split("\\")
     elementsOfPath.pop()
