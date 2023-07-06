@@ -63,6 +63,7 @@ elif project == "react":
         f.write(f"cd /home/{directory}\nkill $(cat save_pid.txt)\nrm save_pid.txt")
 
     elementsOfPath = os.getcwd().split("\\")
+    elementsOfPath.pop()
     elementsOfPath.append("build")
     path = "\\".join(elementsOfPath)
     shutil.copytree(path, pathToDir)
