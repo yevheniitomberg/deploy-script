@@ -29,4 +29,3 @@ with open(f"/etc/nginx/sites-available/{APP_DOMAIN}", "w") as f:
 os.system(f'ln -s /etc/nginx/sites-available/{APP_DOMAIN} /etc/nginx/sites-enabled/{APP_DOMAIN}')
 os.system(f'nginx -t')
 os.system(f'nginx -s reload')
-os.system(f'certbot --nginx -d {APP_DOMAIN}')
