@@ -3,7 +3,7 @@ import shutil
 import os
 
 def copytree(src,dst):
-    os.system("cp -r "+src+" "+dst)
+    os.system(f"xcopy {src} {dst}")
 
 project = sys.argv[1]
 directory = sys.argv[2]
