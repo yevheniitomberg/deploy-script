@@ -2,7 +2,7 @@
 shift
 if %0 == spring (
   python loader.py %0 %1 %2 %3 %8 %9
-) else if %1 == react (
+) else if %0 == react (
   python loader.py %0 %1 %2 %3
 ) else (
   echo wrong project type
