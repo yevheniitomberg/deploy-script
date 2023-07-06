@@ -8,7 +8,7 @@ if %0 == spring (
   echo wrong project type
 )
 cd /D H:
-cd /home/%0
+cd /home/%1
 plink -ssh %6 -pw %7 -m start_deploy.txt
 if %5 EQU 1 plink -ssh %6 -pw %7 -m configure_nginx.txt
 if %4 EQU 1 plink -ssh %6 -pw %7 -m load_cert.txt
