@@ -30,8 +30,8 @@ shutil.copy(f"{os.getcwd()}\\fix_sh.py", pathToDir)
 
 # Text files to execute remote scripts
 if project == "spring":
-    typeOfBuild = sys.argv[5]
-    jarFileName = sys.argv[6]
+    typeOfBuild = sys.argv[6]
+    jarFileName = sys.argv[5]
     with open(f"{pathToDir}/deploy.sh", "w") as f:
         f.write(f"#!/bin/bash\nnohup java -jar {jarFileName} > app.log 2>&1 &\necho $! > save_pid.txt")
 
