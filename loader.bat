@@ -9,7 +9,7 @@ if %jasyptDecision% == 1 (
 )
 
 if %0 == spring (    
-  if %key% == 1 (
+  if NOT %key% == 0 (
     python loader.py %0 %1 %2 %3 %8 %9 %key%
   ) else (
     python loader.py %0 %1 %2 %3 %8 %9
