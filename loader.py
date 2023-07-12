@@ -9,6 +9,11 @@ project = sys.argv[1]
 directory = sys.argv[2]
 mappedRemoteDisk = sys.argv[3]
 port = sys.argv[4]
+jasyptKey = ''
+try:
+    jasyptKey = f"-Djasypt.encryptor.password={sys.argv[7]}"
+except:
+    pass
 
 pathToDir = f"{mappedRemoteDisk}:/home/{directory}"
 
@@ -33,7 +38,7 @@ if project == "spring":
     typeOfBuild = sys.argv[6]
     jarFileName = sys.argv[5]
     with open(f"{pathToDir}/deploy.sh", "w") as f:
-        f.write(f"#!/bin/bash\nnohup java -jar {jarFileName} > app.log 2>&1 &\necho $! > save_pid.txt")
+        f.write(f"#!/bin/bash\nnohup java {jasyptKey} -jar {jarFileName} > app.log 2>&1 &\necho $! > save_pid.txt")
 
     with open(f"{pathToDir}/restart.sh", "w") as f:
         f.write(f"cd /home/{directory}\nkill $(cat save_pid.txt)\nrm save_pid.txt\n./deploy.sh")
