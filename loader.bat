@@ -1,13 +1,17 @@
 @echo off
 shift
 
-if %0 == spring (
-  set /P jasyptDecision=Configure jasypt key?
-  if %jasyptDecision% == 1 (
-    set /P key=Enter your jasypt key: 
+set /A key = 0
+
+set /P jasyptDecision=Configure jasypt key?
+if %jasyptDecision% == 1 (
+  set /P key=Enter your jasypt key: 
+)
+
+if %0 == spring (    
+  if %key% == 1 (
     python loader.py %0 %1 %2 %3 %8 %9 %key%
-  )
-  else (
+  ) else (
     python loader.py %0 %1 %2 %3 %8 %9
   )
 ) else if %0 == react (
