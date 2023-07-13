@@ -59,7 +59,7 @@ if project == "spring":
     elif typeOfBuild == "gradle":
         elementsOfPath.append("build")
         buildFolder = "\\".join(elementsOfPath)
-        copytree(f"{buildFolder}\\resources", f"{mappedRemoteDisk}:/home/{directory}")
+        copytree(f"{buildFolder}\\resources", f"{mappedRemoteDisk}:/home/{directory}", project)
         elementsOfPath.append("libs")
 
     path = "\\".join(elementsOfPath)
@@ -83,5 +83,5 @@ elif project == "react":
     elementsOfPath.pop()
     elementsOfPath.append("build")
     path = "\\".join(elementsOfPath)
-    copytree(path, pathToDir)
+    copytree(path, pathToDir, project)
 
