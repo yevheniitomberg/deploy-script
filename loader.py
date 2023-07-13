@@ -50,10 +50,14 @@ if project == "spring":
     elementsOfPath = os.getcwd().split("\\")
     elementsOfPath.pop()
 
+    buildFolder = ''
+
     if typeOfBuild == "maven":
         elementsOfPath.append("target")
     elif typeOfBuild == "gradle":
         elementsOfPath.append("build")
+        buildFolder = "\\".join(elementsOfPath)
+        copytree(f"{buildFolder}\\resources", f"{mappedRemoteDisk}:/home/{directory}")
         elementsOfPath.append("libs")
 
     path = "\\".join(elementsOfPath)
